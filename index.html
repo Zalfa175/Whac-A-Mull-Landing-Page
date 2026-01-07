@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whac a Mull - Official Site</title>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Bubblegum+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        :root {
+            --grass: #7dbf2e;
+            --grass-dark: #5e921f;
+            --dirt: #8d6e63;
+            --dirt-dark: #5d4037;
+            --accent: #ff7043;
+        }
+
+        /* --- BACKGROUND RUMPUT UTAMA --- */
+        body {
+            font-family: 'Bubblegum Sans', cursive;
+            margin: 0;
+            background-color: var(--grass);
+            background-image: radial-gradient(var(--grass-dark) 1.5px, transparent 1.5px);
+            background-size: 25px 25px;
+            color: #2e1a14;
+        }
+
+        .hero-section {
+            background: linear-gradient(180deg, #81d4fa 0%, #b3e5fc 100%);
+            padding: 40px 20px 60px;
+            text-align: center;
+            border-bottom: 12px solid var(--dirt);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .game-logo {
+            max-width: 350px;
+            width: 100%;
+            filter: drop-shadow(0 6px 10px rgba(0,0,0,0.15));
+            margin-bottom: 10px;
+        }
+
+        .game-description {
+            max-width: 500px;
+            font-size: 1.15rem;
+            line-height: 1.4;
+            font-weight: bold;
+            margin: 10px auto 25px;
+            text-shadow: 1px 1px 0 rgba(255,255,255,0.6);
+        }
+
+        .btn-play {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 16px 55px;
+            font-family: 'Luckiest Guy', cursive;
+            font-size: 1.8rem;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 8px 0 #bf360c;
+            animation: floating 2s infinite ease-in-out;
+            z-index: 5;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        .main-content {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .section-wrapper {
+            background: white;
+            border: 8px solid var(--dirt);
+            border-radius: 35px;
+            padding: 35px;
+            margin-bottom: 45px;
+            text-align: center;
+        }
+
+        h2.title {
+            font-family: 'Luckiest Guy', cursive;
+            color: var(--dirt-dark);
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+        }
+
+        /* --- KONSTRUKSI LUBANG ANTI-NGAMBANG & KEPALA UTUH --- */
+        .hole-container {
+            position: relative;
+            width: 220px;
+            height: 180px; /* Ruang tinggi agar kepala tidak kepotong */
+            margin: 0 auto;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        /* Bagian belakang lubang (gelap) */
+        .hole-back {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 70px;
+            background: #1a110e;
+            border-radius: 50% / 40%;
+            box-shadow: inset 0 10px 20px rgba(0,0,0,0.8);
+            z-index: 1;
+        }
+
+        /* Mole di layer tengah */
+        .mole-img {
+            width: 150px;
+            position: relative;
+            z-index: 2;
+            animation: popUpPerfect 3s infinite ease-in-out;
+            pointer-events: none;
+        }
+
+        /* Bagian depan lubang (Rumput & Bibir Lubang) */
+       /* Bibir Lubang Depan menggunakan gambar penutupmu */
+        .hole-front {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100%; /* Sesuaikan agar menutupi container */
+            background-image: url('image_87785b.png'); /* Gambar rumput penutup */
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: bottom center;
+            z-index: 3; /* Tetap di depan mole */
+            pointer-events: none;
+        }
+        
+        /* Lubang Belakang (Gelap) */
+        .hole-back {
+            position: absolute;
+            bottom: 10px; /* Sesuaikan agar pas di bawah bibir rumput */
+            width: 180px;
+            height: 60px;
+            background: #1a110e;
+            border-radius: 50% / 40%;
+            z-index: 1;
+        }
+        
+        @keyframes popUpPerfect {
+            0%, 15% { transform: translateY(100px); opacity: 0; }
+            45%, 75% { transform: translateY(2px); opacity: 1; } /* Atur translateY agar kepala tidak keluar terlalu tinggi */
+            95%, 100% { transform: translateY(100px); opacity: 0; }
+        }
+
+        .swiper-slide h3 { font-family: 'Luckiest Guy', cursive; color: var(--dirt-dark); margin-top: 15px; }
+        
+        footer {
+            text-align: center;
+            padding: 5px 10px;
+            background: var(--dirt-dark);
+        }
+        .exit-board { max-width: 280px; width: 85%; }
+        .swiper-button-next, .swiper-button-prev { color: var(--dirt-dark); }
+    </style>
+</head>
+<body>
+
+    <header class="hero-section">
+        <img src="Image/Game Logo.png" alt="Logo" class="game-logo">
+        <p class="game-description">
+            Siapkan palumu dan bersiaplah menghajar para Mull nakal! 
+            Klik secepat mungkin, hindari Bomb Mole, dan kumpulkan skor tertinggi!
+        </p>
+        <a href="#" class="btn-play">MAIN SEKARANG!</a>
+    </header>
+
+    <div class="main-content">
+        
+        <section class="section-wrapper">
+            <h2 class="title">Karakter Mole</h2>
+            <div class="swiper moleSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="hole-container">
+                            <div class="hole-back"></div>
+                            <img src="Image/tank mole.png" class="mole-img">
+                            <div class="hole-front"></div>
+                        </div>
+                        <h3>Tank Mole</h3>
+                        <p>Kuat dan butuh 2x pukulan!</p>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="hole-container">
+                            <div class="hole-back"></div>
+                            <img src="Image/ninja mole.png" class="mole-img" style="animation-delay: 0.5s;">
+                            <div class="hole-front"></div>
+                        </div>
+                        <h3>Ninja Mole</h3>
+                        <p>Sangat gesit, jangan sampai lolos!</p>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="hole-container">
+                            <div class="hole-back"></div>
+                            <img src="Image/tricky mole.png" class="mole-img" style="animation-delay: 0.8s;">
+                            <div class="hole-front"></div>
+                        </div>
+                        <h3>Tricky Mole</h3>
+                        <p>Berpindah dari satu lubang ke lubang lain (menyisakan topi di satu lubang)</p>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="hole-container">
+                            <div class="hole-back"></div>
+                            <img src="Image/bomb mole.png" class="mole-img" style="animation-delay: 1.2s;">
+                            <div class="hole-front"></div>
+                        </div>
+                        <h3 style="color: #d32f2f;">Bomb Mole</h3>
+                        <p>BAHAYA! Jangan dipukul!</p>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </section>
+
+        <section class="section-wrapper" style="border-color: #0288d1;">
+            <h2 class="title" style="color: #0288d1;">Senjata & Rewards</h2>
+            <div class="swiper rewardSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="Image/frost breaker (1).png" alt="Frost" style="height: 180px; border-radius: 20px; margin-bottom: 15px;">
+                        <h3>Frost Breaker</h3>
+                        <p>Memperlambat waktu muncul Mole!</p>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="Image/volt hammer.png" alt="Wood" style="height: 180px; border-radius: 20px; margin-bottom: 15px;">
+                        <h3>Volt Hammer</h3>
+                        <p>Membuat tikus di lubang sebelahnya terkena efek stun selama beberapa detik</p>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="Image/crimson fang.png" alt="Bonus" style="height: 180px; margin-bottom: 15px;">
+                        <h3>Crimson Fang</h3>
+                        <p> Ketika menggunakan hammer ini waktu jadi terasa lebih lambat.</p>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="Image/candy bonker.png" alt="Bonus" style="height: 180px; margin-bottom: 15px;">
+                        <h3>Candy bonker</h3>
+                        <p>Menambah bonus coin untuk setiap combo hit</p>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <img src="Image/Team Logo.png" alt="Mull" class="exit-board">
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        new Swiper(".moleSwiper", {
+            loop: true,
+            autoplay: { delay: 3500 },
+            navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+        });
+        new Swiper(".rewardSwiper", {
+            loop: true,
+            autoplay: { delay: 3500 },
+            navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+        });
+    </script>
+</body>
+</html>

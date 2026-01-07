@@ -1,0 +1,310 @@
+/* General Styling */
+body {
+    font-family: 'Bubblegum Sans', cursive; /* Default font, fun and playful */
+    margin: 0;
+    background-color: #f0f8ff; /* Light blue background */
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+h1, h2, h3 {
+    font-family: 'Luckiest Guy', cursive; /* For headlines, strong and impactful */
+    color: #8B4513; /* Dark brown for headings */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+section {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+/* Hero Section */
+.hero-section {
+    background-image: url('https://via.placeholder.com/1500x800/7CFC00/ffffff?text=Lapangan+Rumput'); /* Placeholder for grassy field */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 100px 20px;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2; /* Ensure content is above background effects */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.game-logo {
+    max-width: 500px;
+    width: 90%;
+    filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.5));
+}
+
+.hero-section h1 {
+    font-size: 3.5em;
+    color: #FFD700; /* Gold for headline */
+    text-shadow: 4px 4px 6px rgba(0,0,0,0.7);
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.ninja-mole-peek {
+    position: absolute; /* Position relative to hero-section */
+    bottom: -50px; /* Adjust as needed */
+    right: 5%;
+    max-width: 200px;
+    animation: peekAndHide 5s infinite ease-in-out;
+}
+
+@keyframes peekAndHide {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-30px); }
+}
+
+
+.btn-play {
+    display: inline-block;
+    background-color: #FF6347; /* Tomato red */
+    color: white;
+    padding: 20px 40px;
+    font-size: 1.8em;
+    font-family: 'Luckiest Guy', cursive;
+    text-decoration: none;
+    border-radius: 50px;
+    box-shadow: 0 8px 0 #CD5C5C;
+    transition: all 0.2s ease-in-out;
+    animation: bounce 2s infinite ease-in-out;
+}
+
+.btn-play:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 13px 0 #CD5C5C;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Features Section */
+.features-section {
+    background-color: #ffe6b3; /* Light orange-yellow */
+    padding: 80px 20px;
+}
+
+.features-section h2 {
+    font-size: 2.8em;
+}
+
+.feature-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+.card {
+    background-color: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    border: 3px solid #FFD700; /* Gold border */
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card img {
+    max-width: 150px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    font-size: 1.8em;
+    color: #FF6347; /* Tomato red */
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 1.1em;
+    color: #555;
+}
+
+.bomb-mole {
+    border-color: #FF4500; /* Orange red for bomb */
+    background-color: #fff0f0; /* Very light red */
+}
+.bomb-mole h3 {
+    color: #FF4500;
+}
+.bomb-mole strong {
+    color: #FF4500;
+}
+
+/* Power-up Section */
+.powerup-section {
+    background-color: #cceeff; /* Light blue */
+    padding: 80px 20px;
+}
+
+.powerup-section h2 {
+    font-size: 2.8em;
+}
+
+.powerup-items {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    max-width: 900px;
+    margin: 40px auto;
+}
+
+.powerup-card {
+    background-color: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    width: 45%;
+    max-width: 400px;
+    border: 3px solid #8B4513;
+}
+
+.powerup-card img {
+    max-width: 200px;
+    margin-bottom: 15px;
+}
+
+.powerup-card h3 {
+    font-size: 2em;
+    color: #008B8B; /* Dark cyan */
+}
+
+/* Gallery Section */
+.gallery-section {
+    background-color: #fdf5e6; /* Old lace */
+    padding: 80px 20px;
+}
+
+.gallery-section .bonyok-img {
+    max-width: 400px;
+    width: 80%;
+    margin-bottom: 30px;
+    border-radius: 15px;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+}
+
+.gallery-section p {
+    font-size: 1.6em;
+    color: #6a0dad; /* Dark purple */
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Bonus Section */
+.bonus-section {
+    background-color: #e6ffe6; /* Light green */
+    padding: 80px 20px;
+}
+
+.bonus-section .bonus-mole-img {
+    max-width: 250px;
+    margin-bottom: 20px;
+}
+
+.bonus-section h3 {
+    font-size: 2.5em;
+    color: #FF8C00; /* Dark orange */
+}
+
+.bonus-section p {
+    font-size: 1.4em;
+    color: #4CAF50; /* Green */
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Footer Section */
+.footer-section {
+    background-color: #8B4513; /* Saddle brown */
+    padding: 50px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-section .exit-dialog {
+    max-width: 600px;
+    width: 90%;
+    display: block;
+    margin: 0 auto;
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5));
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2.5em;
+    }
+
+    .btn-play {
+        padding: 15px 30px;
+        font-size: 1.5em;
+    }
+
+    .feature-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .powerup-items {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .powerup-card {
+        width: 80%;
+    }
+
+    .gallery-section p {
+        font-size: 1.3em;
+    }
+
+    .bonus-section p {
+        font-size: 1.2em;
+    }
+    .ninja-mole-peek {
+        right: 0;
+        bottom: 0;
+        max-width: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section h1 {
+        font-size: 2em;
+    }
+    .game-logo {
+        max-width: 300px;
+    }
+    .btn-play {
+        font-size: 1.2em;
+        padding: 12px 25px;
+    }
+    h2 {
+        font-size: 2em;
+    }
+    .card h3, .powerup-card h3 {
+        font-size: 1.5em;
+    }
+}
